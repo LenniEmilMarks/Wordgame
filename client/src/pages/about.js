@@ -38,7 +38,7 @@ function About() {
                 Description
               </h3>
 
-              <p class="p-2">
+              <p class="p-8">
                 Description of the Word Game. The word game is simple game with
                 goal to guess a random word. When you press the play button on
                 the homepage it will take you to the game. If you want to start
@@ -59,7 +59,7 @@ function About() {
               <h3 class=" text-sky-400 text-3xl font-mono text-center">
                 Author
               </h3>
-              <p class="p-2">
+              <p class="p-8">
                 I'm a junior software developer from Finland. With this project
                 i'm learing javascript, tailwind and react. I hope that you will
                 like this game that i made.
@@ -69,7 +69,7 @@ function About() {
               <h3 class=" text-sky-400 text-3xl font-mono text-center">
                 Copyright
               </h3>
-              <p class="p-2">
+              <p class="p-8">
                 This project is free to use for anyone. No credits needed, i
                 hope this will help someone with their projects. Here is the
                 github{" "}

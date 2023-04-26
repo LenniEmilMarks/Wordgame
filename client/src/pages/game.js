@@ -1,6 +1,7 @@
 import React from "react";
 import "../index.css";
 import wordgametimer from "../components/wordgame";
+
 function Game() {
   return (
     <div className="app">
@@ -92,6 +93,7 @@ function Game() {
           A Word Game │ Copyright by <a href="about">Lenni</a>, 2023
         </p>
       </footer>
+
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import "../index.css";
-import Switch from "@mui/material/Switch";
-
-const label = { inputProps: { "aria-label": "Switch demo" } };
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import timer from "../components/settingscomponent";
 
 function Settings() {
   return (
@@ -24,13 +24,15 @@ function Settings() {
       >
         <div class=" w-2/4 h-5/6 bg-slate-50 rounded-lg shadow-lg shadow-blue-500/50">
           <div class="grid grid-cols-3 grid-rows-1 border-b border-slate-200 dark:border-slate-600">
-          <a class="text-sky-400 font-mono text-2xl flex pl-12 items-center" href="/">
+            <a
+              class="text-sky-400 font-mono text-2xl flex pl-12 items-center"
+              href="/"
+            >
               Homepage
             </a>
-          <h2 class="flex justify-center items-center text-sky-400 text-4xl font-mono mt-4 mb-4">
-            Settings
-          </h2>
-
+            <h2 class="flex justify-center items-center text-sky-400 text-4xl font-mono mt-4 mb-4">
+              Settings
+            </h2>
           </div>
           <table class="border-collapse table-fixed w-1/4 text-sm">
             <tbody class="bg-slate-50">
@@ -38,8 +40,15 @@ function Settings() {
                 <td class="text-1xl border-b border-slate-200 dark:border-slate-600 p-4 pl-8 text-sky-400 font-mono">
                   Timer:{" "}
                 </td>
-                <td class="border-b border-slate-200 dark:border-slate-600 p-4 text-sky-400 font-mono">
-                  <Switch {...label} defaultChecked />
+                <td
+                  id="timer"
+                  class="border-b border-slate-200 dark:border-slate-600 p-4 text-sky-400 font-mono"
+                >
+                  <FormControlLabel
+                    control={<Checkbox defaultChecked />}
+                    label=""
+                    onClick={timer}
+                  />
                 </td>
               </tr>
               <tr>
@@ -47,7 +56,10 @@ function Settings() {
                   Track results:{" "}
                 </td>
                 <td class="border-b border-slate-200 dark:border-slate-600 p-4 text-sky-400 font-mono">
-                  <Switch {...label} />
+                  <FormControlLabel
+                    control={<Checkbox  />}
+                    label=""
+                  />
                 </td>
               </tr>
               <tr>
@@ -55,7 +67,10 @@ function Settings() {
                   Dark Mode:{" "}
                 </td>
                 <td class="border-b border-slate-200 dark:border-slate-600 p-4 text-sky-400 font-mono">
-                  <Switch {...label} />
+                  <FormControlLabel
+                    control={<Checkbox  />}
+                    label=""
+                  />
                 </td>
               </tr>
               <tr>
@@ -63,7 +78,10 @@ function Settings() {
                   Light Mode:{" "}
                 </td>
                 <td class="border-b border-slate-200 dark:border-slate-600 p-4 text-sky-400 font-mono">
-                  <Switch {...label} defaultChecked />
+                  <FormControlLabel
+                    control={<Checkbox defaultChecked />}
+                    label=""
+                  />
                 </td>
               </tr>
               <tr>
@@ -71,12 +89,14 @@ function Settings() {
                   Time limit:{" "}
                 </td>
                 <td class="border-b border-slate-200 dark:border-slate-600 p-4 text-sky-400 font-mono">
-                  <Switch {...label} />
+                  <FormControlLabel
+                    control={<Checkbox  />}
+                    label=""
+                  />
                 </td>
               </tr>
             </tbody>
           </table>
-          
         </div>
       </main>
 
