@@ -4,8 +4,9 @@ import Game from "./pages/game";
 import Frontpage from "./pages/frontpage";
 import Settings from "./pages/settings";
 import About from "./pages/about";
-import App from './app';
+import App from "./components/fetchDB";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,7 +24,12 @@ const router = createBrowserRouter([
     path: "About",
     element: <About />,
   },
+  {
+    path: "App",
+    element: <App />,
+  },
 ]);
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RouterProvider router={router} />);

@@ -1,4 +1,4 @@
-
+import App from "./fetchDB";
 function wordgametimer (){
 
   //SHUFFLE FUNCTION TO SHUFFLE THE ARRAY
@@ -23,18 +23,7 @@ function wordgametimer (){
 
   //WORDGAME
 
-      const words = [
-        "banana",
-        "strawberry",
-        "headphones",
-        "wallet",
-        "computer",
-        "keyboard",
-        "mouse",
-        "customizable"
-      ];
-      
-      const result = getRandomItem(words);
+      const result = getRandomItem(App);
 
         let slicedword = result.match(/.{1,2}/g);
         let text = 1;

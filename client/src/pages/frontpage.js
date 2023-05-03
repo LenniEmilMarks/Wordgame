@@ -1,6 +1,7 @@
 import React from "react";
 import "../index.css";
 
+
 function Frontpage() {
   return (
     <div className="app">
