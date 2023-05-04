@@ -4,7 +4,7 @@ import Game from "./pages/game";
 import Frontpage from "./pages/frontpage";
 import Settings from "./pages/settings";
 import About from "./pages/about";
-import App from "./components/fetchDB";
+import Wordgametimer from "./components/wordgame";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
   },
   {
     path: "App",
-    element: <App />,
+    element: <Wordgametimer />,
   },
 ]);
 

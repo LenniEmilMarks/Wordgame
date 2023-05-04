@@ -1,6 +1,6 @@
 import React from "react";
 import "../index.css";
-import wordgametimer from "../components/wordgame";
+import Wordgametimer from "../components/wordgame";
 
 function Game() {
   return (
@@ -42,7 +42,7 @@ function Game() {
               <button
                 class="text-sky-400 font-mono pr-6"
                 onClick={() => {
-                  wordgametimer();
+                  Wordgametimer();
                 }}
                 id="button-start"
               >
@@ -93,7 +93,6 @@ function Game() {
           A Word Game │ Copyright by <a href="about">Lenni</a>, 2023
         </p>
       </footer>
-
     </div>
   );
 }

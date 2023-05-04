@@ -1,24 +1,6 @@
-import React, { useState, useEffect } from "react";
-import Axios from "axios";
+import App from "./test";
 
 function Wordgametimer() {
-  const result = "";
-  const [words, setWords] = useState([]);
-  useEffect(() => {
-    Axios.get("http://localhost:3001/api/get").then((response) => {
-      setWords(response.data);
-    });
-  }, []);
-
-  if(words.length>0) {
-    const wordlist = [];
-    console.log(wordlist);
-
-    words.map((val) => {
-      wordlist.push(val.word);
-    });
-    result = getRandomItem(wordlist);
-    }
   //SHUFFLE FUNCTION TO SHUFFLE THE ARRAY
 
   function shuffle(array) {
@@ -40,7 +22,9 @@ function Wordgametimer() {
   }
 
   //WORDGAME
-  
+
+
+  const result = getRandomItem(App());
   console.log(result);
   let slicedword = result.match(/.{1,2}/g);
 
