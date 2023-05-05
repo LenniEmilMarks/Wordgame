@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Axios from "axios";
 
-function Wordgametimer() {
-  const result = "";
+function useWordgametimer() {
+  
   const [words, setWords] = useState([]);
   useEffect(() => {
     Axios.get("http://localhost:3001/api/get").then((response) => {
@@ -10,43 +10,49 @@ function Wordgametimer() {
     });
   }, []);
 
-  if(words.length>0) {
-    const wordlist = [];
-    console.log(wordlist);
 
-    words.map((val) => {
-      wordlist.push(val.word);
-    });
-    result = getRandomItem(wordlist);
-    }
-  //SHUFFLE FUNCTION TO SHUFFLE THE ARRAY
-
-  function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-  }
 
   //PICK RANDOM STRING FROM THE ARRAY
-
   function getRandomItem(arr) {
     const randomIndex = Math.floor(Math.random() * arr.length);
-
+  
     const item = arr[randomIndex];
-
+  
     return item;
   }
+  
+    //SHUFFLE FUNCTION TO SHUFFLE THE ARRAY
+  
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+  
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+let result = "";
+if (words.length === 0) {
+  return (
+    <>{console.log("loading")}</>
+  );
+}
+else {
+  const wordlist = [];
+
+  words.map((val) => {
+    wordlist.push(val.word);
+  });
+  result = getRandomItem(wordlist);
+}
 
   //WORDGAME
-  
+
   console.log(result);
   let slicedword = result.match(/.{1,2}/g);
-
+  console.log(slicedword)
   let text = 1;
   let fail = 1;
-
+  
   // ADD LETTER BOXES TO THE MAIN CONTENT OF THE PAGE
   function wordgame() {
     shuffle(slicedword);
@@ -102,100 +108,101 @@ function Wordgametimer() {
       }
     }
   }
-  //TIMER
-  let score = "";
-  var seconds = 0o00;
-  var tens = 0o00;
-  let screen = document.getElementById("screen");
-  var appendTens = document.getElementById("tens");
-  var appendSeconds = document.getElementById("seconds");
-  var buttonStart = document.getElementById("button-start");
-  var buttonStop = document.getElementById("button-stop");
-  var buttonReset = document.getElementById("button-reset");
-  var Interval;
-  buttonStart.addEventListener("click", check);
-  function check() {
-    const boxes = document.querySelectorAll(".button");
-    boxes.forEach((button) => {
-      button.remove();
-    });
-    clearInterval(Interval);
-    tens = "00";
-    seconds = "00";
-    appendTens.innerHTML = tens;
-    appendSeconds.innerHTML = seconds;
-    screen.value = "";
-    document.getElementById("score").innerHTML = "";
-    document.getElementById("guesses").innerHTML = "";
-    document.getElementById("correct").innerHTML = "";
-    document.getElementById("error").innerHTML = "";
-  }
-
-  buttonStop.addEventListener("click", check2);
-  function check2() {
-    const boxes = document.querySelectorAll(".button");
-    boxes.forEach((button) => {
-      button.remove();
-    });
-    tens = "00";
-    seconds = "00";
-    appendTens.innerHTML = tens;
-    appendSeconds.innerHTML = seconds;
-    clearInterval(Interval);
-    screen.value = "";
-    document.getElementById("score").innerHTML = "";
-    document.getElementById("guesses").innerHTML = "";
-    document.getElementById("correct").innerHTML = "";
-    document.getElementById("error").innerHTML = "";
-  }
-
-  buttonReset.addEventListener("click", check3);
-  function check3() {
-    var resultwin = document.getElementById("correct").innerHTML;
-    if (resultwin !== "YOU WON!") {
-      tens = "00";
-      seconds = "00";
-      appendTens.innerHTML = tens;
-      appendSeconds.innerHTML = seconds;
-      screen.value = "";
-      fail = 1;
-      document.getElementById("guesses").innerHTML = "";
-      document.getElementById("correct").innerHTML = "";
-      document.getElementById("error").innerHTML = "";
-      document.getElementById("score").innerHTML = "";
-      const boxes = document.querySelectorAll(".button");
-      boxes.forEach((button) => {
-        button.remove();
-      });
-      wordgame();
-    }
-  }
-
+//TIMER
+let score = "";
+var seconds = 0o00;
+var tens = 0o00;
+let screen = document.getElementById("screen");
+var appendTens = document.getElementById("tens");
+var appendSeconds = document.getElementById("seconds");
+var buttonStart = document.getElementById("button-start");
+var buttonStop = document.getElementById("button-stop");
+var buttonReset = document.getElementById("button-reset");
+var Interval;
+buttonStart.addEventListener("click", Check);
+function Check() {
+  const boxes = document.querySelectorAll(".button");
+  boxes.forEach((button) => {
+    button.remove();
+  });
   clearInterval(Interval);
-  Interval = setInterval(startTimer, 10);
-  wordgame();
-  function startTimer() {
-    tens++;
+  tens = "00";
+  seconds = "00";
+  appendTens.innerHTML = tens;
+  appendSeconds.innerHTML = seconds;
+  screen.value = "";
+  document.getElementById("score").innerHTML = "";
+  document.getElementById("guesses").innerHTML = "";
+  document.getElementById("correct").innerHTML = "";
+  document.getElementById("error").innerHTML = "";
+  
+}
 
-    if (tens <= 9) {
-      appendTens.innerHTML = "0" + tens;
-    }
+buttonStop.addEventListener("click", check2);
+function check2() {
+  const boxes = document.querySelectorAll(".button");
+  boxes.forEach((button) => {
+    button.remove();
+  });
+  tens = "00";
+  seconds = "00";
+  appendTens.innerHTML = tens;
+  appendSeconds.innerHTML = seconds;
+  clearInterval(Interval);
+  screen.value = "";
+  document.getElementById("score").innerHTML = "";
+  document.getElementById("guesses").innerHTML = "";
+  document.getElementById("correct").innerHTML = "";
+  document.getElementById("error").innerHTML = "";
+}
 
-    if (tens > 9) {
-      appendTens.innerHTML = tens;
-    }
-
-    if (tens > 99) {
-      seconds++;
-      appendSeconds.innerHTML = "0" + seconds;
-      tens = 0;
-      appendTens.innerHTML = "0" + 0;
-    }
-
-    if (seconds > 9) {
-      appendSeconds.innerHTML = seconds;
-    }
+buttonReset.addEventListener("click", check3);
+function check3() {
+  var resultwin = document.getElementById("correct").innerHTML;
+  if (resultwin !== "YOU WON!") {
+    tens = "00";
+    seconds = "00";
+    appendTens.innerHTML = tens;
+    appendSeconds.innerHTML = seconds;
+    screen.value = "";
+    fail = 1;
+    document.getElementById("guesses").innerHTML = "";
+    document.getElementById("correct").innerHTML = "";
+    document.getElementById("error").innerHTML = "";
+    document.getElementById("score").innerHTML = "";
+    const boxes = document.querySelectorAll(".button");
+    boxes.forEach((button) => {
+      button.remove();
+    });
+    wordgame();
   }
 }
 
-export default Wordgametimer;
+clearInterval(Interval);
+Interval = setInterval(startTimer, 10);
+wordgame();
+function startTimer() {
+  tens++;
+
+  if (tens <= 9) {
+    appendTens.innerHTML = "0" + tens;
+  }
+
+  if (tens > 9) {
+    appendTens.innerHTML = tens;
+  }
+
+  if (tens > 99) {
+    seconds++;
+    appendSeconds.innerHTML = "0" + seconds;
+    tens = 0;
+    appendTens.innerHTML = "0" + 0;
+  }
+
+  if (seconds > 9) {
+    appendSeconds.innerHTML = seconds;
+  }
+}
+}
+
+export default useWordgametimer;

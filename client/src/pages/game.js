@@ -1,8 +1,9 @@
-import React from "react";
-import "../index.css";
-import Wordgametimer from "../components/wordgame";
+import useWordgametimer from "../components/wordgame";
 
 function Game() {
+  function Wordgame(){
+    useWordgametimer();
+  }
   return (
     <div className="app">
       <header
@@ -41,9 +42,9 @@ function Game() {
             <div class="" className="buttons">
               <button
                 class="text-sky-400 font-mono pr-6"
-                onClick={() => {
-                  Wordgametimer();
-                }}
+                onClick={
+                 Wordgame()
+                }
                 id="button-start"
               >
                 New Game
@@ -96,5 +97,4 @@ function Game() {
     </div>
   );
 }
-
 export default Game;
