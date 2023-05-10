@@ -49,4 +49,4 @@ which you may need order to get the wordgame code work.
 If you found any issues or you would like to suggest an improvement or ideas to this project, please submit an issue using the issues tab above.
 
 ## Image of the project
-![Alt text](https://user-images.githubusercontent.com/129946468/231980857-47c137ba-a51f-4282-bb70-4e22aca90aa2.png)
+![Alt text](https://user-images.githubusercontent.com/129946468/237336505-194e83dd-bac6-46f0-8978-4b5af8e9a11d.png)
