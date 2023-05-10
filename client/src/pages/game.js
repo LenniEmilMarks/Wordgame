@@ -1,9 +1,6 @@
-import useWordgametimer from "../components/wordgame";
+import Wordgametimer from "../components/wordgame";
 
 function Game() {
-  function Wordgame(){
-    useWordgametimer();
-  }
   return (
     <div className="app">
       <header
@@ -42,9 +39,7 @@ function Game() {
             <div class="" className="buttons">
               <button
                 class="text-sky-400 font-mono pr-6"
-                onClick={
-                 Wordgame()
-                }
+                onClick={() => Wordgametimer()}
                 id="button-start"
               >
                 New Game
@@ -63,7 +58,15 @@ function Game() {
           <div
             class="w-full h-4/6 grid grid-cols-3 grid-rows-2 justify-items-center pt-2 items-center"
             id="button-box"
-          ></div>
+          >
+            <div
+              class="text-sky-400 font-mono text-2xl col-start-2	col-end-2"
+              id="leaderboard"
+              style={{ display: "none" }}
+            >
+              <a href="Score">Add you score to the leaderboard</a>
+            </div>
+          </div>
           <div class="flex justify-center items-center h-1/6">
             <form>
               <input
@@ -97,4 +100,5 @@ function Game() {
     </div>
   );
 }
+
 export default Game;

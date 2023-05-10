@@ -1,4 +1,6 @@
 
+/*
+Unfinished small start of settings code
 
 function timer (){
     var tens = document.getElementById("tens");
@@ -16,3 +18,4 @@ function timer (){
 }
 
 export default timer;
+*/

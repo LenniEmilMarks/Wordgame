@@ -1,15 +1,19 @@
-import React, { useState, useEffect, useCallback } from "react";
+/*
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
+*/
 
-function useWordgametimer() {
-  
+function Wordgametimer() {
+  /*
+  Serveside data fetching code which i did not get working.
+
   const [words, setWords] = useState([]);
   useEffect(() => {
     Axios.get("http://localhost:3001/api/get").then((response) => {
       setWords(response.data);
     });
   }, []);
-
+*/
 
 
   //PICK RANDOM STRING FROM THE ARRAY
@@ -30,6 +34,9 @@ function useWordgametimer() {
         [array[i], array[j]] = [array[j], array[i]];
       }
     }
+  /*
+  Serveside data fetching code which i did not get working.
+
 let result = "";
 if (words.length === 0) {
   return (
@@ -44,12 +51,21 @@ else {
   });
   result = getRandomItem(wordlist);
 }
+*/
 
   //WORDGAME
-
-  console.log(result);
+  const words = [
+    "banana",
+    "strawberry",
+    "headphones",
+    "wallet",
+    "computer",
+    "keyboard",
+    "mouse",
+    "customizable"
+  ];
+  const result = getRandomItem(words);
   let slicedword = result.match(/.{1,2}/g);
-  console.log(slicedword)
   let text = 1;
   let fail = 1;
   
@@ -97,6 +113,12 @@ else {
         document.getElementById("correct").innerHTML = "YOU WON!";
         document.getElementById("guesses").innerHTML = "Attempts: " + fail;
         fail = "";
+        document.getElementById("leaderboard").style.display = "inline";
+        let props = {
+          userword,
+          score
+          }
+        Information(props);
       } else {
         wordgame();
         screen.value = "";
@@ -119,8 +141,8 @@ var buttonStart = document.getElementById("button-start");
 var buttonStop = document.getElementById("button-stop");
 var buttonReset = document.getElementById("button-reset");
 var Interval;
-buttonStart.addEventListener("click", Check);
-function Check() {
+buttonStart.addEventListener("click", check);
+function check() {
   const boxes = document.querySelectorAll(".button");
   boxes.forEach((button) => {
     button.remove();
@@ -135,7 +157,8 @@ function Check() {
   document.getElementById("guesses").innerHTML = "";
   document.getElementById("correct").innerHTML = "";
   document.getElementById("error").innerHTML = "";
-  
+  document.getElementById("leaderboard").style.display = "none";
+
 }
 
 buttonStop.addEventListener("click", check2);
@@ -154,6 +177,7 @@ function check2() {
   document.getElementById("guesses").innerHTML = "";
   document.getElementById("correct").innerHTML = "";
   document.getElementById("error").innerHTML = "";
+  document.getElementById("leaderboard").style.display = "none";
 }
 
 buttonReset.addEventListener("click", check3);
@@ -204,5 +228,14 @@ function startTimer() {
   }
 }
 }
+export function Information(props) {
+  const wordandscore = props;
+  console.log(wordandscore);
+    return (
+      <>
+      <p>{wordandscore}</p>
+      </>
+    );
+}
 
-export default useWordgametimer;
+export default Wordgametimer;

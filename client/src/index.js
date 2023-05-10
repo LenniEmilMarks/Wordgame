@@ -4,7 +4,8 @@ import Game from "./pages/game";
 import Frontpage from "./pages/frontpage";
 import Settings from "./pages/settings";
 import About from "./pages/about";
-import App from "./components/test";
+import Leaderboard from "./pages/Leaderboard";
+import Score from "./pages/score";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -25,8 +26,12 @@ const router = createBrowserRouter([
     element: <About />,
   },
   {
-    path: "App",
-    element: <App />,
+    path: "Leaderboard",
+    element: <Leaderboard />,
+  },
+  {
+    path: "Score",
+    element: <Score />,
   },
 ]);
 

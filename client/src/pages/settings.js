@@ -2,7 +2,6 @@ import React from "react";
 import "../index.css";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import timer from "../components/settingscomponent";
 
 function Settings() {
   return (
@@ -47,7 +46,6 @@ function Settings() {
                   <FormControlLabel
                     control={<Checkbox defaultChecked />}
                     label=""
-                    onClick={timer}
                   />
                 </td>
               </tr>
